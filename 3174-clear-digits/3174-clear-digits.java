@@ -1,18 +1,19 @@
 class Solution {
     public String clearDigits(String s) {
-        StringBuilder res = new StringBuilder();
-        int i;
-        for(i=0; i<s.length(); i++)
-        {
-            if(s.charAt(i)>='0'&&s.charAt(i)<='9')
-            {
-                res.deleteCharAt(res.length()-1);
-            }
-            else
-            {
-                res.append(s.charAt(i));
-            }
+        Set<Integer> st=new HashSet<>();
+        Stack<Integer> stack=new Stack<>();
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(c>='0'&& c<='9'){
+                st.add(i);
+                st.add(stack.pop());
+            }else stack.push(i);
         }
-        return res.toString();
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<s.length();i++){
+            if(!st.contains(i))
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
     }
 }
