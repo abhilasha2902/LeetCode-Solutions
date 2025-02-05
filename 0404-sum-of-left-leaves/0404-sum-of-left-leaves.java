@@ -21,7 +21,7 @@ class Solution {
             return 0;
         }
         int sum=0;
-    if(root.left!=null && root.left.left ==null && root.right==null){
+if(root.left!=null && root.left.left == null && root.left.right==null){
         sum += root.left.val;
 
         }
