@@ -1,14 +1,13 @@
 class Solution {
     public int rob(int[] nums) {
-        // int[] arr= new arr[nums.size];
-        int sum=0;
-        for(int i=0;i<nums.length;i+=2){
-           
-            sum+=nums[i];
-
-        
+        if (nums.length == 0) return 0; 
+        if (nums.length == 1) return nums[0]; 
+         int f = 0, s = 0;
+  for (int num : nums) {
+            int temp = f;
+            f = Math.max(f, s + num);
+            s = temp;
+        }
+      return f;
     }
-    return sum;
-}
-
 }
